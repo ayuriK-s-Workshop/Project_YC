@@ -14,19 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 92001
   dialogues:
-  - nextIndex: 1
+  - nextIndex: 0
+    justNext: 1
     isOpponent: 1
     isEnd: 0
     text: Hello
-  - nextIndex: 2
+  - nextIndex: 0
+    justNext: 1
     isOpponent: 0
     isEnd: 0
     text: Hi
-  - nextIndex: 3
+  - nextIndex: 0
+    justNext: 1
     isOpponent: 1
     isEnd: 0
     text: How are you?
-  - nextIndex: -1
+  - nextIndex: 0
+    justNext: 1
     isOpponent: 0
     isEnd: 1
     text: I'm happy

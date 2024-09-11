@@ -25,6 +25,7 @@ namespace Defines
         public class DialogueText
         {
             public int nextIndex;
+            public bool justNext;
             public bool isOpponent;
             public bool isEnd;
             [TextArea]
