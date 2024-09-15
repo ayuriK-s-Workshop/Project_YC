@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -60,7 +61,7 @@ public class DialogueManager
             {
                 GameObject.Destroy(_playerDialogueInstance);
             }
-            if (_opponentDialogueInstance == null)
+            if (_opponentDialogueInstance != null)
             {
                 GameObject.Destroy(_opponentDialogueInstance);
             }
@@ -69,6 +70,7 @@ public class DialogueManager
                 GameObject.Destroy(_tradeItemInstance);
             }
 
+            _isDialogueEnd = false;
             return;
         }
 
@@ -98,13 +100,17 @@ public class DialogueManager
             _playerDialogueInstance.transform.Find("TextBG/Text").GetComponent<TextMeshProUGUI>().text = _currentDialogueData.dialogues[index].text;
         }
 
+        // 대화 중 거래 시작
         if (_currentDialogueData.dialogues[index].isTradeStart)
         {
             InstantiateTargetItem();
         }
 
-        _isDialogueEnd = _currentDialogueData.dialogues[index].isEnd;
-        _currentDialogueIndex = _currentDialogueData.dialogues[index].justNext ? _currentDialogueIndex + 1 : _currentDialogueData.dialogues[index].nextIndex;
+        if (_currentDialogueData.dialogues[index].tradeAcceptIndex == 0 && _currentDialogueData.dialogues[index].tradeDenyIndex == 0)
+        {
+            _isDialogueEnd = _currentDialogueData.dialogues[index].isEnd;
+            _currentDialogueIndex = _currentDialogueData.dialogues[index].justNext ? _currentDialogueIndex + 1 : _currentDialogueData.dialogues[index].nextIndex;
+        }
     }
 
 
@@ -112,5 +118,18 @@ public class DialogueManager
     {
         _tradeItemInstance = GameObject.Instantiate(_tradeItemObj);
         _tradeItemInstance.GetComponent<SpriteRenderer>().sprite = _targetItemData.texture;
+    }
+
+
+    public void AcceptTrade()
+    {
+        Manager.GameManager.UpdatePlayerMoney(-_targetItemData.actualValue);
+        _currentDialogueIndex = _currentDialogueData.dialogues[_currentDialogueIndex].tradeAcceptIndex;
+        ChangeDialogue();
+    }
+    public void DenyTrade()
+    {
+        _currentDialogueIndex = _currentDialogueData.dialogues[_currentDialogueIndex].tradeDenyIndex;
+        ChangeDialogue();
     }
 }

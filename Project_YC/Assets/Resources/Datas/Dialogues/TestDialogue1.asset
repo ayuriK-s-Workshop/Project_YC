@@ -20,21 +20,53 @@ MonoBehaviour:
     isTradeStart: 0
     isEnd: 0
     text: Hello.
+    tradeAcceptIndex: 0
+    tradeDenyIndex: 0
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
     text: I hope to sell old watch.
+    tradeAcceptIndex: 0
+    tradeDenyIndex: 0
   - nextIndex: 0
-    justNext: 1
+    justNext: 0
     isOpponent: 1
     isTradeStart: 1
     isEnd: 0
     text: Here's the thing.
+    tradeAcceptIndex: 3
+    tradeDenyIndex: 5
   - nextIndex: 0
     justNext: 1
     isOpponent: 0
     isTradeStart: 0
+    isEnd: 0
+    text: Alright. I got you.
+    tradeAcceptIndex: 0
+    tradeDenyIndex: 0
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 1
+    isTradeStart: 0
     isEnd: 1
-    text: Alright.
+    text: Have a good day.
+    tradeAcceptIndex: 0
+    tradeDenyIndex: 0
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 0
+    isTradeStart: 0
+    isEnd: 0
+    text: I don't think it's good trade.
+    tradeAcceptIndex: 0
+    tradeDenyIndex: 0
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 1
+    isTradeStart: 0
+    isEnd: 1
+    text: Alright.. I'll be back later.
+    tradeAcceptIndex: 0
+    tradeDenyIndex: 0

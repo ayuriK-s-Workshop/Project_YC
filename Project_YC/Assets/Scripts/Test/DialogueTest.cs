@@ -11,4 +11,14 @@ public class DialogueTest : MonoBehaviour
     {
         Manager.DialogueManager.ChangeDialogue();
     }
+
+    public void TestAccept()
+    {
+        Manager.DialogueManager.AcceptTrade();
+    }
+
+    public void TestDeny()
+    {
+        Manager.DialogueManager.DenyTrade();
+    }
 }

@@ -17,6 +17,13 @@ namespace Defines
             Careful,    // 꼼꼼함
             Stupid,     // 호구
         }
+
+
+        // 전당포 UI 구성 요소들
+        public enum PawnshopUIElements
+        {
+            PlayerMoney,
+        }
     }
 
     public class Classes
@@ -31,6 +38,8 @@ namespace Defines
             public bool isEnd;
             [TextArea]
             public string text;
+            public int tradeAcceptIndex;
+            public int tradeDenyIndex;
         }
     }
 }
