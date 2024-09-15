@@ -27,6 +27,7 @@ namespace Defines
             public int nextIndex;
             public bool justNext;
             public bool isOpponent;
+            public bool isTradeStart;
             public bool isEnd;
             [TextArea]
             public string text;

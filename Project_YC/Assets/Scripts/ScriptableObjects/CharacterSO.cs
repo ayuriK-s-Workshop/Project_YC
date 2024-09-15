@@ -6,5 +6,6 @@ public class CharacterSO : ScriptableObject
     public int id;
     public string name;
     public Defines.Enums.CharacterPersonality personality;
-    public InterchangeableItemSO item;
+    public int dialogueId;
+    public int itemId;
 }

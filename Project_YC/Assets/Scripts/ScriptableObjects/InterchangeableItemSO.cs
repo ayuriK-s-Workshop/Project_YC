@@ -5,4 +5,6 @@ public class InterchangeableItemSO : ScriptableObject
 {
     public int id;
     public string name;
+    public int actualValue;
+    public Sprite texture;
 }

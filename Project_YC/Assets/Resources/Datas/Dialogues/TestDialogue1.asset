@@ -17,20 +17,24 @@ MonoBehaviour:
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
+    isTradeStart: 0
     isEnd: 0
-    text: Hello
-  - nextIndex: 0
-    justNext: 1
-    isOpponent: 0
-    isEnd: 0
-    text: Hi
+    text: Hello.
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
+    isTradeStart: 0
     isEnd: 0
-    text: How are you?
+    text: I hope to sell old watch.
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 1
+    isTradeStart: 1
+    isEnd: 0
+    text: Here's the thing.
   - nextIndex: 0
     justNext: 1
     isOpponent: 0
+    isTradeStart: 0
     isEnd: 1
-    text: I'm happy
+    text: Alright.

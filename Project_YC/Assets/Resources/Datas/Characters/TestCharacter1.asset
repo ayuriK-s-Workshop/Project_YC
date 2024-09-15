@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TestCharacter1
   m_EditorClassIdentifier: 
   id: 90001
-  name: TestName
+  name: Test
   personality: 0
-  item: {fileID: 0}
+  dialogueId: 92001
+  itemId: 91001

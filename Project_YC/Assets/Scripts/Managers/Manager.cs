@@ -7,10 +7,12 @@ public class Manager : MonoBehaviour
     static private DataManager _dataManager = new DataManager();
     static private DialogueManager _dialogueManager = new DialogueManager();
     static private UIManager _uiManager = new UIManager();
+    static private GameManager _gameManager = new GameManager();
 
     static public DataManager DataManager { get { return _dataManager; } }
     static public DialogueManager DialogueManager {  get { return _dialogueManager; } }
     static public UIManager UIManager { get { return _uiManager; } }
+    static public GameManager GameManager { get { return _gameManager; } }
 
     private void Awake()
     {
@@ -31,5 +33,6 @@ public class Manager : MonoBehaviour
         DataManager.Init();
         UIManager.Init();
         DialogueManager.Init();
+        GameManager.Init();
     }
 }
