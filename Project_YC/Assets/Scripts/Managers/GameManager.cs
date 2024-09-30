@@ -10,12 +10,12 @@ public class GameManager
     public void Init()
     {
         playerMoney = 5000;
-        Manager.UIManager.mainCanvas.transform.Find("BasicFrame/PlayerMoney").GetComponent<TextMeshProUGUI>().text = $"{playerMoney}";
+        Manager.UI.mainCanvas.transform.Find("BasicFrame/PlayerMoney").GetComponent<TextMeshProUGUI>().text = $"{playerMoney}";
     }
 
     public void UpdatePlayerMoney(int value)
     {
         playerMoney += value;
-        Manager.UIManager.mainCanvas.transform.Find("BasicFrame/PlayerMoney").GetComponent<TextMeshProUGUI>().text = $"{playerMoney}";
+        Manager.UI.mainCanvas.transform.Find("BasicFrame/PlayerMoney").GetComponent<TextMeshProUGUI>().text = $"{playerMoney}";
     }
 }

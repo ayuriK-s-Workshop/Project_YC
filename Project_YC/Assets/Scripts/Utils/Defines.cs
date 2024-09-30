@@ -3,12 +3,19 @@
  * 추가적인 클래스 선언이 필요한 경우에는 이원섭과 상의 후 결정할 것
  */
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Defines
 {
     public class Enums
     {
+        public enum Scenes
+        {
+            PawnshopScene,
+        }
+
+
         // 캐릭터 성격
         public enum CharacterPersonality
         {
@@ -17,12 +24,24 @@ namespace Defines
             Careful,    // 꼼꼼함
             Stupid,     // 호구
         }
+    }
 
-
+    public class SceneComponents
+    {
         // 전당포 UI 구성 요소들
-        public enum PawnshopUIElements
+        public enum PawnshopUI
         {
+            DialogueSection,
+            TradeSection,
+            NegoSection,
+            DrawerSection,
             PlayerMoney,
+            TriggerButton,
+            TradeAcceptButton,
+            TradeDenyButton,
+            ValueIncreaseButton,
+            ValueDecreaseButton,
+            ValueInputField,
         }
     }
 
@@ -38,8 +57,14 @@ namespace Defines
             public bool isEnd;
             [TextArea]
             public string text;
-            public int tradeAcceptIndex;
-            public int tradeDenyIndex;
+            public int tradeAcceptIndex;    // 거래 성사
+            public int tradeDenyIndex;      // 거래 거절
+        }
+
+        [Serializable]
+        public class TradeDialogueText
+        {
+            public string[] texts;
         }
     }
 }

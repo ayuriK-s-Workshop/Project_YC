@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TestDialogue1
   m_EditorClassIdentifier: 
   id: 92001
+  acceptText: []
+  denyText: []
   dialogues:
   - nextIndex: 0
     justNext: 1

@@ -31,7 +31,7 @@ public class DialogueManager
     public void Init()
     {
         _tradeItemObj = Resources.Load("Prefabs/ItemObject") as GameObject;
-        _dialogueSection = Manager.UIManager.mainCanvas.transform.Find("BasicFrame/DialogueSection").gameObject;
+        _dialogueSection = Manager.UI.mainCanvas.transform.Find("BasicFrame/DialogueSection").gameObject;
         _opponentDialogueObj = Resources.Load("Prefabs/OpponentDialogue") as GameObject;
         _playerDialogueObj = Resources.Load("Prefabs/PlayerDialogue") as GameObject;
     }
@@ -40,9 +40,9 @@ public class DialogueManager
     // 대화 발생 메소드
     public void TriggerDialogue(int dialogueId, int itemId)
     {
-        _currentDialogueData = Manager.DataManager.dialogueDB[dialogueId];
+        _currentDialogueData = Manager.Data.dialogueDB[dialogueId];
         _currentDialogueIndex = 0;
-        _targetItemData = Manager.DataManager.interchangeableItemDB[itemId];
+        _targetItemData = Manager.Data.interchangeableItemDB[itemId];
         ChangeDialogue(_currentDialogueIndex);
     }
 
@@ -150,7 +150,7 @@ public class DialogueManager
 
     public void AcceptTrade()
     {
-        Manager.GameManager.UpdatePlayerMoney(-_targetItemData.actualValue);
+        Manager.Game.UpdatePlayerMoney(-_targetItemData.actualValue);
         _currentDialogueIndex = _currentDialogueData.dialogues[_currentDialogueIndex].tradeAcceptIndex;
         ChangeDialogue();
     }

@@ -4,16 +4,16 @@ public class DialogueTest : MonoBehaviour
 {
     public void TestTrigger()
     {
-        Manager.DialogueManager.TriggerDialogue(Manager.DataManager.characterDB[90001].dialogueId, Manager.DataManager.characterDB[90001].itemId);
+        Manager.Dialogue.TriggerDialogue(Manager.Data.characterDB[90001].dialogueId, Manager.Data.characterDB[90001].itemId);
     }
 
     public void TestAccept()
     {
-        Manager.DialogueManager.AcceptTrade();
+        Manager.Dialogue.AcceptTrade();
     }
 
     public void TestDeny()
     {
-        Manager.DialogueManager.DenyTrade();
+        Manager.Dialogue.DenyTrade();
     }
 }

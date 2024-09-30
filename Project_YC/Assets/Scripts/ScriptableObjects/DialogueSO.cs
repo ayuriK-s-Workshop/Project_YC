@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,5 +6,10 @@ using UnityEngine;
 public class DialogueSO : ScriptableObject
 {
     public int id;
+
+    public List<Defines.Classes.TradeDialogueText> acceptText;
+    public List<Defines.Classes.TradeDialogueText> denyText;
+    public List<Defines.Classes.TradeDialogueText> lowCostText;
+
     public List<Defines.Classes.DialogueText> dialogues;
 }
