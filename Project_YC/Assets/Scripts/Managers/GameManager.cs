@@ -1,16 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 
 public class GameManager
 {
     public int playerMoney;
+    public SceneController sceneController;
 
     public void Init()
     {
-        playerMoney = 5000;
-        Manager.UI.mainCanvas.transform.Find("BasicFrame/PlayerMoney").GetComponent<TextMeshProUGUI>().text = $"{playerMoney}";
+        switch (Manager.Scene.currentScene)
+        {
+            case Defines.Enums.Scenes.PawnshopScene:
+                {
+                    sceneController = Manager.ManagerInstance.gameObject.AddComponent<PawnshopController>();
+                    break;
+                }
+        }
     }
 
     public void UpdatePlayerMoney(int value)

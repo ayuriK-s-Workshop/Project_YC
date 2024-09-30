@@ -7,9 +7,10 @@ public class DialogueSO : ScriptableObject
 {
     public int id;
 
-    public List<Defines.Classes.TradeDialogueText> acceptText;
-    public List<Defines.Classes.TradeDialogueText> denyText;
-    public List<Defines.Classes.TradeDialogueText> lowCostText;
+    public List<Defines.Classes.DialogueText> acceptText;
+    public List<Defines.Classes.DialogueText> denyText;
+    public List<Defines.Classes.DialogueText> negoText;
+    public List<Defines.Classes.DialogueText> lowCostText;
 
     public List<Defines.Classes.DialogueText> dialogues;
 }

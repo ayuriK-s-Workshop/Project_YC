@@ -38,6 +38,7 @@ namespace Defines
             PlayerMoney,
             TriggerButton,
             TradeAcceptButton,
+            TradeNegoButton,
             TradeDenyButton,
             ValueIncreaseButton,
             ValueDecreaseButton,
@@ -59,12 +60,6 @@ namespace Defines
             public string text;
             public int tradeAcceptIndex;    // 거래 성사
             public int tradeDenyIndex;      // 거래 거절
-        }
-
-        [Serializable]
-        public class TradeDialogueText
-        {
-            public string[] texts;
         }
     }
 }
