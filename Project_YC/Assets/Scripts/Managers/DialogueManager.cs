@@ -1,6 +1,5 @@
-using System;
 using System.Collections;
-using System.Reflection;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -21,6 +20,7 @@ public class DialogueManager
 
     // 현재 대화 & 아이템 데이터
     private DialogueSO _currentDialogueData;
+    private List<Defines.Classes.DialogueText> _currentDialogue;
     private InterchangeableItemSO _targetItemData;
     private Coroutine _dialogueCoroutine;
 
@@ -41,6 +41,7 @@ public class DialogueManager
     public void TriggerDialogue(int dialogueId, int itemId)
     {
         _currentDialogueData = Manager.Data.dialogueDB[dialogueId];
+        _currentDialogue = _currentDialogueData.dialogues;
         _currentDialogueIndex = 0;
         _targetItemData = Manager.Data.interchangeableItemDB[itemId];
         ChangeDialogue(_currentDialogueIndex);
@@ -87,7 +88,7 @@ public class DialogueManager
         TextMeshProUGUI targetTMP = null;
 
         // 상대방 대화인지 플레이어 대화인지 체크 후 대화 표시
-        if (_currentDialogueData.dialogues[index].isOpponent)
+        if (_currentDialogue[index].isOpponent)
         {
             if (_playerDialogueInstance != null)
             {
@@ -100,7 +101,7 @@ public class DialogueManager
             targetTMP = _opponentDialogueInstance.transform.Find("TextBG/Text").GetComponent<TextMeshProUGUI>();
         }
 
-        else if (!_currentDialogueData.dialogues[index].isOpponent)
+        else if (!_currentDialogue[index].isOpponent)
         {
             if (_opponentDialogueInstance != null)
             {
@@ -115,26 +116,26 @@ public class DialogueManager
         }
 
         targetTMP.text = "";
-        for (int i = 0; i < _currentDialogueData.dialogues[index].text.Length; i++)
+        for (int i = 0; i < _currentDialogue[index].text.Length; i++)
         {
-            targetTMP.text += _currentDialogueData.dialogues[index].text[i];
+            targetTMP.text += _currentDialogue[index].text[i];
             yield return new WaitForSeconds(Values.Time.SPEED_DEFAULT_TEXT_ANIMATION);
         }
 
         // 대화 중 거래 시작
-        if (_currentDialogueData.dialogues[index].isTradeStart)
+        if (_currentDialogue[index].isTradeStart)
         {
             InstantiateTargetItem();
         }
 
-        if (_currentDialogueData.dialogues[index].tradeAcceptIndex == 0 && _currentDialogueData.dialogues[index].tradeDenyIndex == 0)
+        _isDialogueEnd = _currentDialogue[index].isEnd;
+        if (_currentDialogue.Count > index + 1)
         {
-            _isDialogueEnd = _currentDialogueData.dialogues[index].isEnd;
-            _currentDialogueIndex = _currentDialogueData.dialogues[index].justNext ? _currentDialogueIndex + 1 : _currentDialogueData.dialogues[index].nextIndex;
+            _currentDialogueIndex = _currentDialogue[index].justNext ? _currentDialogueIndex + 1 : _currentDialogue[index].nextIndex;
+            yield return new WaitForSeconds(Values.Time.DELAY_DEFAULT_TEXT_PROCEED);
         }
 
-        yield return new WaitForSeconds(Values.Time.DELAY_DEFAULT_TEXT_PROCEED);
-        if (!_currentDialogueData.dialogues[index].isTradeStart)
+        if (!_currentDialogue[index].isTradeStart)
         {
             ChangeDialogue(_currentDialogueIndex);
         }
@@ -151,12 +152,16 @@ public class DialogueManager
     public void AcceptTrade()
     {
         Manager.Game.UpdatePlayerMoney(-_targetItemData.actualValue);
-        _currentDialogueIndex = _currentDialogueData.dialogues[_currentDialogueIndex].tradeAcceptIndex;
+        _currentDialogueIndex = 0;
+        _currentDialogue = _currentDialogueData.acceptText;
         ChangeDialogue();
     }
+
+
     public void DenyTrade()
     {
-        _currentDialogueIndex = _currentDialogueData.dialogues[_currentDialogueIndex].tradeDenyIndex;
+        _currentDialogueIndex = 0;
+        _currentDialogue = _currentDialogueData.denyText;
         ChangeDialogue();
     }
 }

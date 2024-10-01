@@ -3,7 +3,6 @@
  * 추가적인 클래스 선언이 필요한 경우에는 이원섭과 상의 후 결정할 것
  */
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Defines
@@ -58,8 +57,6 @@ namespace Defines
             public bool isEnd;
             [TextArea]
             public string text;
-            public int tradeAcceptIndex;    // 거래 성사
-            public int tradeDenyIndex;      // 거래 거절
         }
     }
 }
