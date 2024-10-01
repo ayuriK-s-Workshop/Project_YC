@@ -132,6 +132,10 @@ public class DialogueManager
         if (_currentDialogue.Count > index + 1)
         {
             _currentDialogueIndex = _currentDialogue[index].justNext ? _currentDialogueIndex + 1 : _currentDialogue[index].nextIndex;
+        }
+
+        if (_isDialogueEnd)
+        {
             yield return new WaitForSeconds(Values.Time.DELAY_DEFAULT_TEXT_PROCEED);
         }
 

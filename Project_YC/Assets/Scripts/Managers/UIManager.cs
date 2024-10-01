@@ -6,7 +6,8 @@ public class UIManager
 {
     public GameObject mainCanvas;
 
-    private List<GameObject> uiComponents = new List<GameObject>();
+    // Key : 열거형 인덱스, Value : UI 오브젝트
+    private Dictionary<int, GameObject> uiComponents = new Dictionary<int, GameObject>();
 
     public void Init()
     {
@@ -19,10 +20,15 @@ public class UIManager
                 {
                     foreach (Defines.SceneComponents.PawnshopUI components in Enum.GetValues(typeof(Defines.SceneComponents.PawnshopUI)))
                     {
-                        uiComponents.Add(GameObject.Find(components.ToString()));
+                        uiComponents.Add((int)components, GameObject.Find(components.ToString()));
                     }
                     break;
                 }
         }
+    }
+
+    public GameObject GetUIObject(int enumIndex)
+    {
+        return uiComponents[enumIndex];
     }
 }
