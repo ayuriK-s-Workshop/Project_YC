@@ -13,34 +13,52 @@ MonoBehaviour:
   m_Name: TestDialogue1
   m_EditorClassIdentifier: 
   id: 92001
-  acceptText:
+  acceptTradeText:
   - nextIndex: 0
     justNext: 1
     isOpponent: 0
     isTradeStart: 0
     isEnd: 0
-    text: Alright. I got you.
+    text: Alright, I got you.
+  - nextIndex: 0
+    justNext: 0
+    isOpponent: 1
+    isTradeStart: 0
+    isEnd: 1
+    text: Thanks.
+  denyTradeText:
   - nextIndex: 0
     justNext: 1
+    isOpponent: 0
+    isTradeStart: 0
+    isEnd: 0
+    text: No.
+  - nextIndex: 0
+    justNext: 0
     isOpponent: 1
     isTradeStart: 0
     isEnd: 1
     text: Have a good day.
-  denyText:
+  acceptNegoText:
   - nextIndex: 0
-    justNext: 1
-    isOpponent: 0
+    justNext: 0
+    isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: I don't think it's good trade.
+    text: That's good.
+  denyNegoText:
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 0
-    isEnd: 1
-    text: Alright.. I'll be back later.
-  negoText: []
-  lowCostText: []
+    isEnd: 0
+    text: No, it's too low.
+  - nextIndex: 0
+    justNext: 0
+    isOpponent: 1
+    isTradeStart: 0
+    isEnd: 0
+    text: How about this?
   dialogues:
   - nextIndex: 0
     justNext: 1

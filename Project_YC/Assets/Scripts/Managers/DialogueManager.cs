@@ -134,12 +134,12 @@ public class DialogueManager
             _currentDialogueIndex = _currentDialogue[index].justNext ? _currentDialogueIndex + 1 : _currentDialogue[index].nextIndex;
         }
 
-        if (_isDialogueEnd)
+        if (_isDialogueEnd || _currentDialogue.Count > index)
         {
             yield return new WaitForSeconds(Values.Time.DELAY_DEFAULT_TEXT_PROCEED);
         }
 
-        if (!_currentDialogue[index].isTradeStart)
+        if (_isDialogueEnd || _currentDialogue.Count > index + 1)
         {
             ChangeDialogue(_currentDialogueIndex);
         }
@@ -153,11 +153,11 @@ public class DialogueManager
     }
 
 
-    public void AcceptTrade()
+    public void AcceptTrade(int value)
     {
-        Manager.Game.UpdatePlayerMoney(-_targetItemData.actualValue);
+        Manager.Game.UpdatePlayerMoney(-value);
         _currentDialogueIndex = 0;
-        _currentDialogue = _currentDialogueData.acceptText;
+        _currentDialogue = _currentDialogueData.acceptTradeText;
         ChangeDialogue();
     }
 
@@ -165,7 +165,23 @@ public class DialogueManager
     public void DenyTrade()
     {
         _currentDialogueIndex = 0;
-        _currentDialogue = _currentDialogueData.denyText;
+        _currentDialogue = _currentDialogueData.denyTradeText;
+        ChangeDialogue();
+    }
+
+
+    public void AcceptNego()
+    {
+        _currentDialogueIndex = 0;
+        _currentDialogue = _currentDialogueData.acceptNegoText;
+        ChangeDialogue();
+    }
+
+
+    public void DenyNego()
+    {
+        _currentDialogueIndex = 0;
+        _currentDialogue = _currentDialogueData.denyNegoText;
         ChangeDialogue();
     }
 }
