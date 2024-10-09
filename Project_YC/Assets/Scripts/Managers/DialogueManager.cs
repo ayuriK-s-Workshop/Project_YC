@@ -118,6 +118,7 @@ public class DialogueManager
         // 대화 중 거래 시작
         if (_currentDialogue[index].isTradeStart)
         {
+            dialogueEventAction.Invoke(Defines.Enums.DialogueEvent.TradeStart);
             InstantiateTargetItem();
         }
 
@@ -125,6 +126,10 @@ public class DialogueManager
         if (_currentDialogue.Count > index + 1)
         {
             _currentDialogueIndex = _currentDialogue[index].justNext ? _currentDialogueIndex + 1 : _currentDialogue[index].nextIndex;
+        }
+        else if (!_isDialogueEnd)
+        {
+            dialogueEventAction.Invoke(Defines.Enums.DialogueEvent.Paused);
         }
 
         if (_isDialogueEnd || _currentDialogue.Count > index)

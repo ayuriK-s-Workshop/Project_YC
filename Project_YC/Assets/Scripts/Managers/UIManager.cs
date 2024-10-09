@@ -27,8 +27,8 @@ public class UIManager
         }
     }
 
-    public GameObject GetUIObject(int enumIndex)
+    public T GetUIObject<T>(int enumIndex)
     {
-        return uiComponents[enumIndex];
+        return uiComponents[enumIndex].GetComponent<T>();
     }
 }

@@ -29,6 +29,8 @@ namespace Defines
         public enum DialogueEvent
         {
             Start,
+            TradeStart,
+            Paused,
             End
         }
     }

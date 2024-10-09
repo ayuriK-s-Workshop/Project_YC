@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PawnshopController : SceneController
@@ -9,6 +10,11 @@ public class PawnshopController : SceneController
     public CharacterController characterController;
 
     private List<int> customerQueue;
+
+    private Button tradeAcceptButton;
+    private Button tradeNegoButton;
+    private Button tradeDenyButton;
+
     private TMP_InputField _valueInputField;
 
 
@@ -26,32 +32,58 @@ public class PawnshopController : SceneController
         }
 
         Manager.Game.playerMoney = 5000;
-        Manager.UI.mainCanvas.transform.Find("BasicFrame/PlayerMoney").GetComponent<TextMeshProUGUI>().text = $"{Manager.Game.playerMoney}";
-
-        Manager.UI.GetUIObject((int)Defines.SceneComponents.PawnshopUI.TradeAcceptButton).GetComponent<Button>().onClick.AddListener(OnClickAcceptButton);
-        Manager.UI.GetUIObject((int)Defines.SceneComponents.PawnshopUI.TradeNegoButton).GetComponent<Button>().onClick.AddListener(OnClickNegoButton);
-        Manager.UI.GetUIObject((int)Defines.SceneComponents.PawnshopUI.TradeDenyButton).GetComponent<Button>().onClick.AddListener(OnClickDenyButton);
-
         Manager.Dialogue.dialogueEventAction += DialogueEventHandler;
 
-        _valueInputField = Manager.UI.GetUIObject((int)Defines.SceneComponents.PawnshopUI.ValueInputField).GetComponent<TMP_InputField>();
+        InitializeUI();
+    }
+
+
+    private void InitializeUI()
+    {
+        Manager.UI.mainCanvas.transform.Find("BasicFrame/PlayerMoney").GetComponent<TextMeshProUGUI>().text = $"{Manager.Game.playerMoney}";
+
+        tradeAcceptButton = Manager.UI.GetUIObject<Button>((int)Defines.SceneComponents.PawnshopUI.TradeAcceptButton);
+        tradeAcceptButton.onClick.AddListener(OnClickAcceptButton);
+
+        tradeNegoButton = Manager.UI.GetUIObject<Button>((int)Defines.SceneComponents.PawnshopUI.TradeNegoButton);
+        tradeNegoButton.onClick.AddListener(OnClickNegoButton);
+
+        tradeDenyButton = Manager.UI.GetUIObject<Button>((int)Defines.SceneComponents.PawnshopUI.TradeDenyButton);
+        tradeDenyButton.onClick.AddListener(OnClickDenyButton);
+
+        _valueInputField = Manager.UI.GetUIObject<TMP_InputField>((int)Defines.SceneComponents.PawnshopUI.ValueInputField);
+        _valueInputField.text = "-----";
+
+        SetUIInteractable(false);
+    }
+
+
+    private void SetUIInteractable(bool value)
+    {
+        tradeAcceptButton.interactable = value;
+        tradeNegoButton.interactable = value;
+        tradeDenyButton.interactable = value;
+        _valueInputField.interactable = value;
     }
 
 
     private void OnClickAcceptButton()
     {
+        SetUIInteractable(false);
         Manager.Dialogue.AcceptTrade(characterController.currentCost);
     }
 
 
     private void OnClickDenyButton()
     {
+        SetUIInteractable(false);
         Manager.Dialogue.DenyTrade();
     }
 
 
     private void OnClickNegoButton()
     {
+        SetUIInteractable(false);
         int negoResult = characterController.TryNegotiation(Int32.Parse(_valueInputField.text));
 
         if (negoResult == 0)
@@ -60,23 +92,8 @@ public class PawnshopController : SceneController
         }
         else
         {
-            _valueInputField.text = $"{negoResult}";
+            //_valueInputField.text = $"{negoResult}";
             Manager.Dialogue.DenyNego();
-        }
-    }
-
-
-    private void EndDialogue()
-    {
-        customerQueue.RemoveAt(0);
-        if (customerQueue.Count > 0)
-        {
-            characterController.UpdateCharacterData(customerQueue[0]);
-            TriggerDialogue();
-        }
-        else
-        {
-            Manager.Dialogue.dialogueEventAction -= DialogueEventHandler;
         }
     }
 
@@ -96,11 +113,51 @@ public class PawnshopController : SceneController
 
                     break;
                 }
-            case Defines.Enums.DialogueEvent.End:
+            case Defines.Enums.DialogueEvent.TradeStart:
                 {
-                    EndDialogue();
+                    DialogueTradeStart();
                     break;
                 }
+            case Defines.Enums.DialogueEvent.Paused:
+                {
+                    DialoguePaused();
+                    break;
+                }
+            case Defines.Enums.DialogueEvent.End:
+                {
+                    DialogueEnd();
+                    break;
+                }
+        }
+    }
+
+
+    private void DialogueTradeStart()
+    {
+        SetUIInteractable(true);
+        _valueInputField.text = $"{Manager.Data.interchangeableItemDB[Manager.Data.characterDB[customerQueue[0]].itemId].actualValue}";
+    }
+
+
+    private void DialoguePaused()
+    {
+        SetUIInteractable(true);
+        _valueInputField.text = $"{characterController.currentCost}";
+    }
+
+
+    private void DialogueEnd()
+    {
+        _valueInputField.text = "-----";
+        customerQueue.RemoveAt(0);
+        if (customerQueue.Count > 0)
+        {
+            characterController.UpdateCharacterData(customerQueue[0]);
+            TriggerDialogue();
+        }
+        else
+        {
+            Manager.Dialogue.dialogueEventAction -= DialogueEventHandler;
         }
     }
 }
