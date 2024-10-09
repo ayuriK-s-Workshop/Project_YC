@@ -13,12 +13,46 @@ MonoBehaviour:
   m_Name: TestDialogue2
   m_EditorClassIdentifier: 
   id: 92002
-  acceptText: []
-  denyText: []
-  highestCostText: []
-  highCostText: []
-  lowCostText: []
-  lowestCostText: []
+  acceptTradeText:
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 0
+    isTradeStart: 0
+    isEnd: 0
+    text: Accept.
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 1
+    isTradeStart: 0
+    isEnd: 1
+    text: Good.
+  denyTradeText:
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 0
+    isTradeStart: 0
+    isEnd: 0
+    text: Deny.
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 1
+    isTradeStart: 0
+    isEnd: 1
+    text: Oh no.
+  acceptNegoText:
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 1
+    isTradeStart: 0
+    isEnd: 0
+    text: That's good.
+  denyNegoText:
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 1
+    isTradeStart: 0
+    isEnd: 0
+    text: That's too High.
   dialogues:
   - nextIndex: 0
     justNext: 1
@@ -26,53 +60,15 @@ MonoBehaviour:
     isTradeStart: 0
     isEnd: 0
     text: Hi.
-    tradeAcceptIndex: 0
-    tradeDenyIndex: 0
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 1
     isEnd: 0
     text: Here's my grandfa's ring.
-    tradeAcceptIndex: 0
-    tradeDenyIndex: 0
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
     text: It contains 99% of gold
-    tradeAcceptIndex: 3
-    tradeDenyIndex: 5
-  - nextIndex: 0
-    justNext: 1
-    isOpponent: 0
-    isTradeStart: 0
-    isEnd: 0
-    text: Alright. I got you.
-    tradeAcceptIndex: 0
-    tradeDenyIndex: 0
-  - nextIndex: 0
-    justNext: 1
-    isOpponent: 1
-    isTradeStart: 0
-    isEnd: 1
-    text: Have a good day.
-    tradeAcceptIndex: 0
-    tradeDenyIndex: 0
-  - nextIndex: 0
-    justNext: 1
-    isOpponent: 0
-    isTradeStart: 0
-    isEnd: 0
-    text: I don't think it's good trade.
-    tradeAcceptIndex: 0
-    tradeDenyIndex: 0
-  - nextIndex: 0
-    justNext: 1
-    isOpponent: 1
-    isTradeStart: 0
-    isEnd: 1
-    text: Alright.. I'll be back later.
-    tradeAcceptIndex: 0
-    tradeDenyIndex: 0

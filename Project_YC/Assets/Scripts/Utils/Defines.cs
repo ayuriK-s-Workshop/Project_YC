@@ -23,6 +23,14 @@ namespace Defines
             Careful,    // 꼼꼼함
             Stupid,     // 호구
         }
+
+
+        // 대화 이벤트들
+        public enum DialogueEvent
+        {
+            Start,
+            End
+        }
     }
 
     public class SceneComponents

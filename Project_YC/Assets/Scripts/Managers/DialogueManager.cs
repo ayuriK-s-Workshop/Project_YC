@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class DialogueManager
 {
     #region 대화 관련 필드
+    public Action<Defines.Enums.DialogueEvent> dialogueEventAction;
+
     private GameObject _dialogueSection;
 
     // 교환 아이템 프리팹 & 인스턴스
@@ -17,6 +20,8 @@ public class DialogueManager
     private GameObject _playerDialogueObj;
     private GameObject _opponentDialogueInstance;
     private GameObject _playerDialogueInstance;
+    private TextMeshProUGUI _opponentDialogueTMP;
+    private TextMeshProUGUI _playerDialogueTMP;
 
     // 현재 대화 & 아이템 데이터
     private DialogueSO _currentDialogueData;
@@ -28,12 +33,17 @@ public class DialogueManager
     private int _currentDialogueIndex;
     #endregion
 
+
     public void Init()
     {
         _tradeItemObj = Resources.Load("Prefabs/ItemObject") as GameObject;
         _dialogueSection = Manager.UI.mainCanvas.transform.Find("BasicFrame/DialogueSection").gameObject;
         _opponentDialogueObj = Resources.Load("Prefabs/OpponentDialogue") as GameObject;
         _playerDialogueObj = Resources.Load("Prefabs/PlayerDialogue") as GameObject;
+        _opponentDialogueInstance = GameObject.Instantiate(_opponentDialogueObj, _dialogueSection.transform);
+        _playerDialogueInstance = GameObject.Instantiate(_playerDialogueObj, _dialogueSection.transform);
+        _opponentDialogueTMP = _opponentDialogueInstance.transform.Find("TextBG/Text").GetComponent<TextMeshProUGUI>();
+        _playerDialogueTMP = _playerDialogueInstance.transform.Find("TextBG/Text").GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -61,20 +71,18 @@ public class DialogueManager
         // 대화 끝난 경우
         if (_isDialogueEnd)
         {
-            if (_playerDialogueInstance != null)
-            {
-                GameObject.Destroy(_playerDialogueInstance);
-            }
-            if (_opponentDialogueInstance != null)
-            {
-                GameObject.Destroy(_opponentDialogueInstance);
-            }
+            Manager.ManagerInstance.StopCoroutine(_dialogueCoroutine);
+
+            _opponentDialogueTMP.text = "";
+            _playerDialogueTMP.text = "";
+
             if (_tradeItemInstance != null)
             {
                 GameObject.Destroy(_tradeItemInstance);
             }
 
             _isDialogueEnd = false;
+            dialogueEventAction.Invoke(Defines.Enums.DialogueEvent.End);
             return;
         }
 
@@ -90,29 +98,14 @@ public class DialogueManager
         // 상대방 대화인지 플레이어 대화인지 체크 후 대화 표시
         if (_currentDialogue[index].isOpponent)
         {
-            if (_playerDialogueInstance != null)
-            {
-                GameObject.Destroy(_playerDialogueInstance);
-            }
-            if (_opponentDialogueInstance == null)
-            {
-                _opponentDialogueInstance = GameObject.Instantiate(_opponentDialogueObj, _dialogueSection.transform);
-            }
+            _playerDialogueTMP.text = "";
             targetTMP = _opponentDialogueInstance.transform.Find("TextBG/Text").GetComponent<TextMeshProUGUI>();
         }
 
         else if (!_currentDialogue[index].isOpponent)
         {
-            if (_opponentDialogueInstance != null)
-            {
-                GameObject.Destroy(_opponentDialogueInstance);
-            }
-            if (_playerDialogueInstance == null)
-            {
-                _playerDialogueInstance = GameObject.Instantiate(_playerDialogueObj, _dialogueSection.transform);
-            }
+            _opponentDialogueTMP.text = "";
             targetTMP = _playerDialogueInstance.transform.Find("TextBG/Text").GetComponent<TextMeshProUGUI>();
-            _playerDialogueInstance.transform.Find("TextBG/Text").GetComponent<TextMeshProUGUI>().text = _currentDialogueData.dialogues[index].text;
         }
 
         targetTMP.text = "";
