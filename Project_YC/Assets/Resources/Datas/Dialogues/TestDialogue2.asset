@@ -10,38 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e6686785f69feb4b888c960cca637ab, type: 3}
-  m_Name: TestDialogue1
+  m_Name: TestDialogue2
   m_EditorClassIdentifier: 
-  id: 92001
+  id: 92002
   acceptTradeText:
   - nextIndex: 0
     justNext: 1
     isOpponent: 0
     isTradeStart: 0
     isEnd: 0
-    text: Alright, I got you.
+    text: Accept.
   - nextIndex: 0
-    justNext: 0
+    justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 1
-    text: Thanks.
+    text: Good.
   denyTradeText:
   - nextIndex: 0
     justNext: 1
     isOpponent: 0
     isTradeStart: 0
     isEnd: 0
-    text: No.
+    text: Deny.
   - nextIndex: 0
-    justNext: 0
+    justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 1
-    text: Have a good day.
+    text: Oh no.
   acceptNegoText:
   - nextIndex: 0
-    justNext: 0
+    justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
@@ -52,29 +52,23 @@ MonoBehaviour:
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: No, it's too low.
-  - nextIndex: 0
-    justNext: 0
-    isOpponent: 1
-    isTradeStart: 0
-    isEnd: 0
-    text: How about this?
+    text: That's too High.
   dialogues:
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: Hello.
+    text: Hi.
+  - nextIndex: 0
+    justNext: 1
+    isOpponent: 1
+    isTradeStart: 1
+    isEnd: 0
+    text: Here's my grandfa's ring.
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: I hope to sell old watch.
-  - nextIndex: 0
-    justNext: 0
-    isOpponent: 1
-    isTradeStart: 1
-    isEnd: 0
-    text: Here's the thing.
+    text: It contains 99% of gold

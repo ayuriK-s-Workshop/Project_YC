@@ -9,6 +9,12 @@ namespace Defines
 {
     public class Enums
     {
+        public enum Scenes
+        {
+            PawnshopScene,
+        }
+
+
         // 캐릭터 성격
         public enum CharacterPersonality
         {
@@ -16,6 +22,34 @@ namespace Defines
             Impatient,  // 급함
             Careful,    // 꼼꼼함
             Stupid,     // 호구
+        }
+
+
+        // 대화 이벤트들
+        public enum DialogueEvent
+        {
+            Start,
+            End
+        }
+    }
+
+    public class SceneComponents
+    {
+        // 전당포 UI 구성 요소들
+        public enum PawnshopUI
+        {
+            DialogueSection,
+            TradeSection,
+            NegoSection,
+            DrawerSection,
+            PlayerMoney,
+            TriggerButton,
+            TradeAcceptButton,
+            TradeNegoButton,
+            TradeDenyButton,
+            ValueIncreaseButton,
+            ValueDecreaseButton,
+            ValueInputField,
         }
     }
 
@@ -25,7 +59,9 @@ namespace Defines
         public class DialogueText
         {
             public int nextIndex;
+            public bool justNext;
             public bool isOpponent;
+            public bool isTradeStart;
             public bool isEnd;
             [TextArea]
             public string text;

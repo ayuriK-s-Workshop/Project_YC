@@ -5,5 +5,11 @@ using UnityEngine;
 public class DialogueSO : ScriptableObject
 {
     public int id;
+
+    public List<Defines.Classes.DialogueText> acceptTradeText;
+    public List<Defines.Classes.DialogueText> denyTradeText;
+    public List<Defines.Classes.DialogueText> acceptNegoText;
+    public List<Defines.Classes.DialogueText> denyNegoText;
+
     public List<Defines.Classes.DialogueText> dialogues;
 }
