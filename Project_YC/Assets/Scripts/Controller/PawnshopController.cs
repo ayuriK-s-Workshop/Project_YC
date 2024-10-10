@@ -28,11 +28,11 @@ public class PawnshopController : SceneController
             customerQueue.Add(90001);
             customerQueue.Add(90002);
             characterController.UpdateCharacterData(customerQueue[0]);
-            Manager.Dialogue.TriggerDialogue(Manager.Data.characterDB[customerQueue[0]].dialogueId, Manager.Data.characterDB[customerQueue[0]].itemId);
+            Manager.Dialogue.pawnshopDialogue.TriggerDialogue(Manager.Data.characterDB[customerQueue[0]].dialogueId, Manager.Data.characterDB[customerQueue[0]].itemId);
         }
 
         Manager.Game.playerMoney = 5000;
-        Manager.Dialogue.dialogueEventAction += DialogueEventHandler;
+        Manager.Dialogue.pawnshopDialogue.dialogueEventAction += DialogueEventHandler;
 
         InitializeUI();
     }
@@ -70,14 +70,14 @@ public class PawnshopController : SceneController
     private void OnClickAcceptButton()
     {
         SetUIInteractable(false);
-        Manager.Dialogue.AcceptTrade(characterController.currentCost);
+        Manager.Dialogue.pawnshopDialogue.AcceptTrade(characterController.currentCost);
     }
 
 
     private void OnClickDenyButton()
     {
         SetUIInteractable(false);
-        Manager.Dialogue.DenyTrade();
+        Manager.Dialogue.pawnshopDialogue.DenyTrade();
     }
 
 
@@ -88,19 +88,19 @@ public class PawnshopController : SceneController
 
         if (negoResult == 0)
         {
-            Manager.Dialogue.AcceptNego();
+            Manager.Dialogue.pawnshopDialogue.AcceptNego();
         }
         else
         {
             //_valueInputField.text = $"{negoResult}";
-            Manager.Dialogue.DenyNego();
+            Manager.Dialogue.pawnshopDialogue.DenyNego();
         }
     }
 
 
     private void TriggerDialogue()
     {
-        Manager.Dialogue.TriggerDialogue(Manager.Data.characterDB[customerQueue[0]].dialogueId, Manager.Data.characterDB[customerQueue[0]].itemId);
+        Manager.Dialogue.pawnshopDialogue.TriggerDialogue(Manager.Data.characterDB[customerQueue[0]].dialogueId, Manager.Data.characterDB[customerQueue[0]].itemId);
     }
 
 
@@ -157,7 +157,7 @@ public class PawnshopController : SceneController
         }
         else
         {
-            Manager.Dialogue.dialogueEventAction -= DialogueEventHandler;
+            Manager.Dialogue.pawnshopDialogue.dialogueEventAction -= DialogueEventHandler;
             Manager.Scene.LoadScene(Defines.Enums.Scenes.ResistanceManageScene);
         }
     }
