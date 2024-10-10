@@ -5,10 +5,12 @@ public class SceneManagerEx
 {
     public Defines.Enums.Scenes currentScene;
 
+
     public void Init()
     {
         UpdateCurrentScene();
     }
+
 
     public void UpdateCurrentScene()
     {
@@ -20,5 +22,11 @@ public class SceneManagerEx
                 break;
             }
         }
+    }
+
+
+    public void LoadScene(Defines.Enums.Scenes type)
+    {
+        SceneManager.LoadScene((int)type);
     }
 }

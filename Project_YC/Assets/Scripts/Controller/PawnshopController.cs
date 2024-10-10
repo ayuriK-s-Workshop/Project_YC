@@ -158,6 +158,7 @@ public class PawnshopController : SceneController
         else
         {
             Manager.Dialogue.dialogueEventAction -= DialogueEventHandler;
+            Manager.Scene.LoadScene(Defines.Enums.Scenes.ResistanceManageScene);
         }
     }
 }

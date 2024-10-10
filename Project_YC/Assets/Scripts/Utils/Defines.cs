@@ -12,6 +12,7 @@ namespace Defines
         public enum Scenes
         {
             PawnshopScene,
+            ResistanceManageScene,
         }
 
 
@@ -31,7 +32,7 @@ namespace Defines
             Start,
             TradeStart,
             Paused,
-            End
+            End,
         }
     }
 
