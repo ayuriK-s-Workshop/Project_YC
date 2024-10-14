@@ -1,13 +1,11 @@
+using System;
 using UnityEngine;
 
 public class SceneController : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
+    public Action<UnityEngine.Object> interactableObject;
 
-    void Update()
+    void Start()
     {
         
     }

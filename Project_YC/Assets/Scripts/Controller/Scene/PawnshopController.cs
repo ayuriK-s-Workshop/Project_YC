@@ -17,10 +17,13 @@ public class PawnshopController : SceneController
 
     private TMP_InputField _valueInputField;
 
+    private PawnshopDialogue _pawnshopDialogue;
+
 
     void Start()
     {
         characterController = transform.AddComponent<CustomerController>();
+        _pawnshopDialogue = Manager.Dialogue.pawnshopDialogue as PawnshopDialogue;
 
         customerQueue = new List<int>();
         // 자동 대화 진행을 위한 임시 작성 부분. 손님 랜덤 소환 기능 구현시 대체 바람.
@@ -28,11 +31,11 @@ public class PawnshopController : SceneController
             customerQueue.Add(90001);
             customerQueue.Add(90002);
             characterController.UpdateCharacterData(customerQueue[0]);
-            Manager.Dialogue.pawnshopDialogue.TriggerDialogue(Manager.Data.characterDB[customerQueue[0]].dialogueId, Manager.Data.characterDB[customerQueue[0]].itemId);
+            _pawnshopDialogue.TriggerDialogue(Manager.Data.characterDB[customerQueue[0]].dialogueId, Manager.Data.characterDB[customerQueue[0]].itemId);
         }
 
         Manager.Game.playerMoney = 5000;
-        Manager.Dialogue.pawnshopDialogue.dialogueEventAction += DialogueEventHandler;
+        _pawnshopDialogue.dialogueEventAction += DialogueEventHandler;
 
         InitializeUI();
     }
@@ -71,14 +74,14 @@ public class PawnshopController : SceneController
     {
         SetUIInteractable(false);
         Manager.Game.AddItemInPlayerStorage(characterController.GetCurrentItemData());
-        Manager.Dialogue.pawnshopDialogue.AcceptTrade(characterController.currentCost);
+        _pawnshopDialogue.AcceptTrade(characterController.currentCost);
     }
 
 
     private void OnClickDenyButton()
     {
         SetUIInteractable(false);
-        Manager.Dialogue.pawnshopDialogue.DenyTrade();
+        _pawnshopDialogue.DenyTrade();
     }
 
 
@@ -89,19 +92,19 @@ public class PawnshopController : SceneController
 
         if (negoResult == 0)
         {
-            Manager.Dialogue.pawnshopDialogue.AcceptNego();
+            _pawnshopDialogue.AcceptNego();
         }
         else
         {
             //_valueInputField.text = $"{negoResult}";
-            Manager.Dialogue.pawnshopDialogue.DenyNego();
+            _pawnshopDialogue.DenyNego();
         }
     }
 
 
     private void TriggerDialogue()
     {
-        Manager.Dialogue.pawnshopDialogue.TriggerDialogue(Manager.Data.characterDB[customerQueue[0]].dialogueId, Manager.Data.characterDB[customerQueue[0]].itemId);
+        _pawnshopDialogue.TriggerDialogue(Manager.Data.characterDB[customerQueue[0]].dialogueId, Manager.Data.characterDB[customerQueue[0]].itemId);
     }
 
 
@@ -159,7 +162,7 @@ public class PawnshopController : SceneController
         else
         {
             Debug.Log($"{Manager.Game.playerStorage.Count}");
-            Manager.Dialogue.pawnshopDialogue.dialogueEventAction -= DialogueEventHandler;
+            _pawnshopDialogue.dialogueEventAction -= DialogueEventHandler;
             Manager.Scene.LoadScene(Defines.Enums.Scenes.ResistanceManageScene);
         }
     }

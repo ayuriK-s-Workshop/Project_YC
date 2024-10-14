@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PawnshopDialogueManager
+public class PawnshopDialogue : BaseDialogue
 {
     #region 대화 관련 필드
     public Action<Defines.Enums.DialogueEvent> dialogueEventAction;
