@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class InteractableObjectController : MonoBehaviour
 {
+    private bool _isClickReady = false;
+
     private void OnMouseDown()
     {
-        Debug.Log("0");
+        _isClickReady = true;
     }
 
     private void OnMouseUp()
     {
-        Debug.Log("1");
+        if (_isClickReady)
+        {
+            Debug.Log($"{name}");
+            if (Manager.Scene.sceneController.interactableObject != null)
+                Manager.Scene.sceneController.interactableObject.Invoke(this);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        _isClickReady = false;
     }
 }
