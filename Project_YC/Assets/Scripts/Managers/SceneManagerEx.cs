@@ -13,6 +13,7 @@ public class SceneManagerEx
     public void Init()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        UpdateCurrentScene();
     }
 
 

@@ -11,6 +11,7 @@ namespace Defines
     {
         public enum Scenes
         {
+            None = -1,
             PawnshopScene,
             ResistanceManageScene,
         }
