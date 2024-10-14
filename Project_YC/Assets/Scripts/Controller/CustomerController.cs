@@ -44,4 +44,9 @@ public class CustomerController : MonoBehaviour
             return currentCost;
         }
     }
+
+    public InterchangeableItemSO GetCurrentItemData()
+    {
+        return _currentItemData;
+    }
 }

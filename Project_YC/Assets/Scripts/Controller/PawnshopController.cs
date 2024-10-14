@@ -70,6 +70,7 @@ public class PawnshopController : SceneController
     private void OnClickAcceptButton()
     {
         SetUIInteractable(false);
+        Manager.Game.AddItemInPlayerStorage(characterController.GetCurrentItemData());
         Manager.Dialogue.pawnshopDialogue.AcceptTrade(characterController.currentCost);
     }
 
@@ -157,6 +158,7 @@ public class PawnshopController : SceneController
         }
         else
         {
+            Debug.Log($"{Manager.Game.playerStorage.Count}");
             Manager.Dialogue.pawnshopDialogue.dialogueEventAction -= DialogueEventHandler;
             Manager.Scene.LoadScene(Defines.Enums.Scenes.ResistanceManageScene);
         }

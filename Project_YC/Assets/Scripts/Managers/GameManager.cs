@@ -11,6 +11,8 @@ public class GameManager
 
     public void Init()
     {
+        playerStorage = new List<InterchangeableItemSO>();
+
         switch (Manager.Scene.currentScene)
         {
             case Defines.Enums.Scenes.PawnshopScene:
@@ -21,9 +23,16 @@ public class GameManager
         }
     }
 
+
     public void UpdatePlayerMoney(int value)
     {
         playerMoney += value;
         Manager.UI.mainCanvas.transform.Find("BasicFrame/PlayerMoney").GetComponent<TextMeshProUGUI>().text = $"{playerMoney}";
+    }
+
+
+    public void AddItemInPlayerStorage(InterchangeableItemSO item)
+    {
+        playerStorage.Add(item);
     }
 }
