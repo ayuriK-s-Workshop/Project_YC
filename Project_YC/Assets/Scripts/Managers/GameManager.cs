@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using TMPro;
 
 public class GameManager
 {
+
     public int playerMoney;
+    public List<InterchangeableItemSO> playerStorage;
+
     public SceneController sceneController;
 
     public void Init()

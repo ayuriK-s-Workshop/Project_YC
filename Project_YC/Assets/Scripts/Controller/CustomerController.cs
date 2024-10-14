@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class CustomerController : MonoBehaviour
 {
     private CharacterSO _currentCharacterData;
     private InterchangeableItemSO _currentItemData;

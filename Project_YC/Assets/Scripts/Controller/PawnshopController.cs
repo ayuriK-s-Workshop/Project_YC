@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PawnshopController : SceneController
 {
-    public CharacterController characterController;
+    public CustomerController characterController;
 
     private List<int> customerQueue;
 
@@ -20,7 +20,7 @@ public class PawnshopController : SceneController
 
     void Start()
     {
-        characterController = transform.AddComponent<CharacterController>();
+        characterController = transform.AddComponent<CustomerController>();
 
         customerQueue = new List<int>();
         // 자동 대화 진행을 위한 임시 작성 부분. 손님 랜덤 소환 기능 구현시 대체 바람.
