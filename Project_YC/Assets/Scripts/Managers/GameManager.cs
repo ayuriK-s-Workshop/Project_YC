@@ -7,20 +7,10 @@ public class GameManager
     public int playerMoney;
     public List<InterchangeableItemSO> playerStorage;
 
-    public SceneController sceneController;
 
     public void Init()
     {
         playerStorage = new List<InterchangeableItemSO>();
-
-        switch (Manager.Scene.currentScene)
-        {
-            case Defines.Enums.Scenes.PawnshopScene:
-                {
-                    sceneController = Manager.ManagerInstance.gameObject.AddComponent<PawnshopController>();
-                    break;
-                }
-        }
     }
 
 
