@@ -12,6 +12,11 @@ public class UIManager
     public void Init()
     {
         mainCanvas = GameObject.Find("MainCanvas");
+    }
+
+    public void UpdateUI()
+    {
+        mainCanvas = GameObject.Find("MainCanvas");
         uiComponents.Clear();
 
         switch (Manager.Scene.currentScene)
@@ -24,7 +29,21 @@ public class UIManager
                     }
                     break;
                 }
+
+            case Defines.Enums.Scenes.ResistanceManageScene:
+                {
+                    foreach (Defines.SceneComponents.ResistanceManageUI components in Enum.GetValues(typeof(Defines.SceneComponents.ResistanceManageUI)))
+                    {
+                        uiComponents.Add((int)components, GameObject.Find(components.ToString()));
+                    }
+                    break;
+                }
         }
+    }
+
+    public GameObject GetUIObject(int enumIndex)
+    {
+        return uiComponents[enumIndex];
     }
 
     public T GetUIObject<T>(int enumIndex)

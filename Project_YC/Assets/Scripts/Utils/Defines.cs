@@ -55,6 +55,12 @@ namespace Defines
             ValueDecreaseButton,
             ValueInputField,
         }
+
+        // 전당포 UI 구성 요소들
+        public enum ResistanceManageUI
+        {
+            StorageUI,
+        }
     }
 
     public class Classes

@@ -11,8 +11,9 @@ public class ResistanceManageController : SceneController
     {
         // StorageUI Initialize
         {
-            _storageUI = GameObject.Find("MainCanvas/StorageUI");
+            _storageUI = Manager.UI.GetUIObject((int)Defines.SceneComponents.ResistanceManageUI.StorageUI);
             _storageItemPrefab = Resources.Load("Prefabs/UI/Item") as GameObject;
+            
             Transform storageInstancePoint  = _storageUI.transform.Find("ScrollView/Viewport/Content");
             foreach (InterchangeableItemSO item in Manager.Game.playerStorage)
             {

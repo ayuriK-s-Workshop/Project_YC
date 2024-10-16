@@ -23,7 +23,7 @@ public class PawnshopController : SceneController
     void Start()
     {
         characterController = transform.AddComponent<CustomerController>();
-        _pawnshopDialogue = Manager.Dialogue.pawnshopDialogue as PawnshopDialogue;
+        _pawnshopDialogue = Manager.Dialogue.dialogue as PawnshopDialogue;
 
         customerQueue = new List<int>();
         // 자동 대화 진행을 위한 임시 작성 부분. 손님 랜덤 소환 기능 구현시 대체 바람.

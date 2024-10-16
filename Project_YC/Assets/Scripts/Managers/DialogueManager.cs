@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DialogueManager
 {
-    public BaseDialogue pawnshopDialogue;
+    public BaseDialogue dialogue;
 
 
     public void Init()
@@ -11,8 +11,8 @@ public class DialogueManager
         {
             case Defines.Enums.Scenes.PawnshopScene:
                 {
-                    pawnshopDialogue = new PawnshopDialogue();
-                    (pawnshopDialogue as PawnshopDialogue).Init();
+                    dialogue = new PawnshopDialogue();
+                    (dialogue as PawnshopDialogue).Init();
                     break;
                 }
         }

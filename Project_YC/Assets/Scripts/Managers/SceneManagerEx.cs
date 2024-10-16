@@ -20,6 +20,8 @@ public class SceneManagerEx
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         UpdateCurrentScene();
+        Manager.UI.UpdateUI();
+        UpdateCurrentSceneScript();
     }
 
 
@@ -41,7 +43,11 @@ public class SceneManagerEx
                 continue;
             GameObject.Destroy(component);
         }
+    }
 
+
+    private void UpdateCurrentSceneScript()
+    {
         switch (currentScene)
         {
             case Defines.Enums.Scenes.PawnshopScene:
