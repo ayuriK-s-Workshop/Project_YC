@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CustomerController : MonoBehaviour
 {
-    private CharacterSO _currentCharacterData;
+    private CustomerSO _currentCharacterData;
     private InterchangeableItemSO _currentItemData;
 
     public int currentCost;

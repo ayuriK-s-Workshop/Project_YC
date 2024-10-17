@@ -68,6 +68,7 @@ namespace Defines
         public enum ResistanceManageUI
         {
             StorageUI,
+            RecruitUI,
         }
     }
 

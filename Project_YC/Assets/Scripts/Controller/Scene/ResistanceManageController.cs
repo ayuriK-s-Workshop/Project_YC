@@ -3,11 +3,13 @@ using UnityEngine;
 public class ResistanceManageController : SceneController
 {
     private GameObject _storageUI;
+    private GameObject _recruitUI;
 
     void Start()
     {
         {
             _storageUI = Manager.UI.GetUIObject((int)Defines.SceneComponents.ResistanceManageUI.StorageUI);
+            _recruitUI = Manager.UI.GetUIObject((int)Defines.SceneComponents.ResistanceManageUI.RecruitUI);
         }
 
         interactableObject += ObjectInteractHandler;
@@ -23,6 +25,11 @@ public class ResistanceManageController : SceneController
             case "Storage":
                 {
                     Manager.UI.ActivateUIInstace(_storageUI);
+                    break;
+                }
+            case "Recruit":
+                {
+                    Manager.UI.ActivateUIInstace(_recruitUI);
                     break;
                 }
         }
