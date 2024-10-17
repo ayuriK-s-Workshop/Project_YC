@@ -35,6 +35,14 @@ namespace Defines
             Paused,
             End,
         }
+
+
+        public enum KeyInputTypes
+        {
+            Down,
+            Press,
+            Up,
+        }
     }
 
     public class SceneComponents
