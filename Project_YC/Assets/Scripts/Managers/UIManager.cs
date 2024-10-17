@@ -9,6 +9,8 @@ public class UIManager
     // Key : 열거형 인덱스, Value : UI 오브젝트
     private Dictionary<int, GameObject> uiComponents = new Dictionary<int, GameObject>();
 
+    private List<GameObject> uiInstaces = new List<GameObject>();
+
     public void Init()
     {
         mainCanvas = GameObject.Find("MainCanvas");

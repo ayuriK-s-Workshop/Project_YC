@@ -9,7 +9,7 @@ public class PawnshopController : SceneController
 {
     public CustomerController characterController;
 
-    private List<int> customerQueue;
+    private List<int> customerQueue = new List<int>();
 
     private Button tradeAcceptButton;
     private Button tradeNegoButton;
@@ -25,7 +25,6 @@ public class PawnshopController : SceneController
         characterController = transform.AddComponent<CustomerController>();
         _pawnshopDialogue = Manager.Dialogue.dialogue as PawnshopDialogue;
 
-        customerQueue = new List<int>();
         // 자동 대화 진행을 위한 임시 작성 부분. 손님 랜덤 소환 기능 구현시 대체 바람.
         {
             customerQueue.Add(90001);

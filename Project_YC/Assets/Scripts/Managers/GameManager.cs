@@ -5,12 +5,12 @@ public class GameManager
 {
 
     public int playerMoney;
-    public List<InterchangeableItemSO> playerStorage;
+    public List<InterchangeableItemSO> playerStorage = new List<InterchangeableItemSO>();
 
 
     public void Init()
     {
-        playerStorage = new List<InterchangeableItemSO>();
+        // 여기에 플레이어 세이브 데이터 받아와서 연동하는 부분 구현 필요함
     }
 
 
