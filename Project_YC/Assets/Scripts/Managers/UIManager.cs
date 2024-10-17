@@ -19,7 +19,9 @@ public class UIManager
     public void UpdateUI()
     {
         mainCanvas = GameObject.Find("MainCanvas");
+
         uiComponents.Clear();
+        uiInstaces.Clear();
 
         switch (Manager.Scene.currentScene)
         {
@@ -51,5 +53,20 @@ public class UIManager
     public T GetUIObject<T>(int enumIndex)
     {
         return uiComponents[enumIndex].GetComponent<T>();
+    }
+
+    public void ActivateUIInstace(GameObject go)
+    {
+        go.SetActive(true);
+        uiInstaces.Add(go);
+    }
+
+    // 무조건 후입선출로 설계함
+    public void DeactivateUIInstance()
+    {
+        if (uiInstaces.Count <= 0)
+            return;
+        uiInstaces[uiInstaces.Count - 1].SetActive(false);
+        uiInstaces.RemoveAt(uiInstaces.Count - 1);
     }
 }
