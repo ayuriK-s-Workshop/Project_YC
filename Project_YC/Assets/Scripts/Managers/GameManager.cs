@@ -5,7 +5,7 @@ public class GameManager
 {
 
     public int playerMoney;
-    public List<InterchangeableItemSO> playerStorage = new List<InterchangeableItemSO>();
+    public Dictionary<int, int> playerStorage = new Dictionary<int, int>();
 
 
     public void Init()
@@ -23,6 +23,8 @@ public class GameManager
 
     public void AddItemInPlayerStorage(InterchangeableItemSO item)
     {
-        playerStorage.Add(item);
+        if (!playerStorage.ContainsKey(item.id))
+            playerStorage.Add(item.id, 0);
+        playerStorage[item.id] += 1;
     }
 }
