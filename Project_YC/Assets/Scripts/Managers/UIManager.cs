@@ -69,4 +69,9 @@ public class UIManager
         uiInstaces[uiInstaces.Count - 1].SetActive(false);
         uiInstaces.RemoveAt(uiInstaces.Count - 1);
     }
+
+    public bool IsUIInstanceExits()
+    {
+        return uiInstaces.Count > 0 ? true : false;
+    }
 }

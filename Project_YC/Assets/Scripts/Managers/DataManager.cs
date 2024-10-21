@@ -8,7 +8,7 @@ public class DataManager
     public Dictionary<int, InterchangeableItemSO> interchangeableItemDB = new Dictionary<int, InterchangeableItemSO>();
     public void Init()
     {
-        foreach (CustomerSO characterData in Resources.LoadAll<CustomerSO>(Values.Directory.DIR_DATA_CHARACTER))
+        foreach (CustomerSO characterData in Resources.LoadAll<CustomerSO>(Values.Directory.DIR_DATA_CHARACTER_CUSTOMER))
         {
             characterDB.Add(characterData.id, characterData);
         }

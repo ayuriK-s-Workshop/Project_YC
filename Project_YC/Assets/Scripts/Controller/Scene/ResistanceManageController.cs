@@ -4,12 +4,16 @@ public class ResistanceManageController : SceneController
 {
     private GameObject _storageUI;
     private GameObject _recruitUI;
+    private GameObject _eventsUI;
+    private GameObject _mapUI;
 
     void Start()
     {
         {
             _storageUI = Manager.UI.GetUIObject((int)Defines.SceneComponents.ResistanceManageUI.StorageUI);
             _recruitUI = Manager.UI.GetUIObject((int)Defines.SceneComponents.ResistanceManageUI.RecruitUI);
+            _eventsUI = Manager.UI.GetUIObject((int)Defines.SceneComponents.ResistanceManageUI.EventsUI);
+            _mapUI = Manager.UI.GetUIObject((int)Defines.SceneComponents.ResistanceManageUI.MapUI);
         }
 
         interactableObject += ObjectInteractHandler;
@@ -30,6 +34,16 @@ public class ResistanceManageController : SceneController
             case "Recruit":
                 {
                     Manager.UI.ActivateUIInstace(_recruitUI);
+                    break;
+                }
+            case "Events":
+                {
+                    Manager.UI.ActivateUIInstace(_eventsUI);
+                    break;
+                }
+            case "Map":
+                {
+                    Manager.UI.ActivateUIInstace(_mapUI);
                     break;
                 }
         }

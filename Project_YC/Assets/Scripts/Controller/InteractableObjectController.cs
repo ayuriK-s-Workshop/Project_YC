@@ -15,8 +15,7 @@ public class InteractableObjectController : MonoBehaviour
     {
         if (_isClickReady)
         {
-            Debug.Log($"{name}");
-            if (Manager.Scene.sceneController.interactableObject != null)
+            if (Manager.Scene.sceneController.interactableObject != null && !Manager.UI.IsUIInstanceExits())
                 Manager.Scene.sceneController.interactableObject.Invoke(this);
         }
     }
