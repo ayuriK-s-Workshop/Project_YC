@@ -9,16 +9,23 @@ public class Manager : MonoBehaviour
     static private UIManager _ui = new UIManager();
     static private GameManager _game = new GameManager();
     static private SceneManagerEx _scene = new SceneManagerEx();
+    static private InputManager _input = new InputManager();
 
     static public DataManager Data { get { return _data; } }
     static public DialogueManager Dialogue {  get { return _dialogue; } }
     static public UIManager UI { get { return _ui; } }
     static public GameManager Game { get { return _game; } }
     static public SceneManagerEx Scene { get { return _scene; } }
+    static public InputManager Input { get { return _input; } }
 
     private void Awake()
     {
         Init();
+    }
+
+    private void Update()
+    {
+        Input.Update();
     }
 
     private void Init()

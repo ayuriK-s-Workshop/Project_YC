@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CharacterData", menuName = "ScriptableObject/CharacterData", order = int.MinValue)]
-public class CharacterSO : ScriptableObject
+[CreateAssetMenu(fileName = "CustomerData", menuName = "ScriptableObject/CharacterData", order = int.MinValue)]
+public class CustomerSO : ScriptableObject
 {
     public int id;
     public string name;

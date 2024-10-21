@@ -19,62 +19,62 @@ MonoBehaviour:
     isOpponent: 0
     isTradeStart: 0
     isEnd: 0
-    text: Alright, I got you.
+    text: "\uC88B\uC2B5\uB2C8\uB2E4, \uADF8 \uAC00\uACA9\uC73C\uB85C \uAC70\uB798\uD558\uC8E0."
   - nextIndex: 0
     justNext: 0
     isOpponent: 1
     isTradeStart: 0
     isEnd: 1
-    text: Thanks.
+    text: "\uACE0\uB9D9\uB124."
   denyTradeText:
   - nextIndex: 0
     justNext: 1
     isOpponent: 0
     isTradeStart: 0
     isEnd: 0
-    text: No.
+    text: "\uBBF8\uC548\uD558\uC9C0\uB9CC \uC774 \uAC70\uB798\uB294 \uBB34\uB9AC\uACA0\uAD70\uC694."
   - nextIndex: 0
     justNext: 0
     isOpponent: 1
     isTradeStart: 0
     isEnd: 1
-    text: Have a good day.
+    text: "...\uC54C\uACA0\uB124"
   acceptNegoText:
   - nextIndex: 0
     justNext: 0
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: That's good.
+    text: "\uADF8 \uC815\uB3C4\uBA74 \uC88B\uACA0\uAD70."
   denyNegoText:
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: No, it's too low.
+    text: "\uC548\uB3FC, \uB108\uBB34 \uB0AE\uB124."
   - nextIndex: 0
     justNext: 0
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: How about this?
+    text: "\uC774 \uC815\uB3C4\uB294 \uC5B4\uB5A4\uAC00?"
   dialogues:
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: Hello.
+    text: "\uC548\uB155\uD558\uC2E0\uAC00."
   - nextIndex: 0
     justNext: 1
     isOpponent: 1
     isTradeStart: 0
     isEnd: 0
-    text: I hope to sell old watch.
+    text: "\uB0A1\uC740 \uC2DC\uACC4\uB97C \uC880 \uD314\uACE0 \uC2F6\uC740\uB370."
   - nextIndex: 0
     justNext: 0
     isOpponent: 1
     isTradeStart: 1
     isEnd: 0
-    text: Here's the thing.
+    text: "\uBB3C\uAC74\uC740 \uC5EC\uAE30\uC788\uB124."

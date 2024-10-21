@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class CustomerController : MonoBehaviour
 {
-    private CharacterSO _currentCharacterData;
+    private CustomerSO _currentCharacterData;
     private InterchangeableItemSO _currentItemData;
 
     public int currentCost;
@@ -24,6 +24,7 @@ public class CharacterController : MonoBehaviour
         // 제안 금액이 현재 값보다 크거나 같을 때 or 제안 금액과의 차이가 2% 안쪽일 때 -> 제안 수락 
         if (currentCost <= value || (currentCost - value) <= currentCost / 100)
         {
+            currentCost = value;
             return 0;
         }
 
@@ -42,5 +43,10 @@ public class CharacterController : MonoBehaviour
 
             return currentCost;
         }
+    }
+
+    public InterchangeableItemSO GetCurrentItemData()
+    {
+        return _currentItemData;
     }
 }

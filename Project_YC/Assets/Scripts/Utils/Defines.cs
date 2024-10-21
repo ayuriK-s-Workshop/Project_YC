@@ -11,7 +11,9 @@ namespace Defines
     {
         public enum Scenes
         {
+            None = -1,
             PawnshopScene,
+            ResistanceManageScene,
         }
 
 
@@ -31,7 +33,15 @@ namespace Defines
             Start,
             TradeStart,
             Paused,
-            End
+            End,
+        }
+
+
+        public enum KeyInputTypes
+        {
+            Down,
+            Press,
+            Up,
         }
     }
 
@@ -52,6 +62,15 @@ namespace Defines
             ValueIncreaseButton,
             ValueDecreaseButton,
             ValueInputField,
+        }
+
+        // 전당포 UI 구성 요소들
+        public enum ResistanceManageUI
+        {
+            StorageUI,
+            RecruitUI,
+            EventsUI,
+            MapUI,
         }
     }
 
