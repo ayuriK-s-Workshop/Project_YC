@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ResistanceManageStorageUI : MonoBehaviour
 {
     private GameObject _storageItemPrefab;
+
     void Start()
     {
         _storageItemPrefab = Resources.Load("Prefabs/UI/Item") as GameObject;

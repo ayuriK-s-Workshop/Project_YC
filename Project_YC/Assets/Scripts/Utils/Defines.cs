@@ -17,8 +17,20 @@ namespace Defines
         }
 
 
-        // 캐릭터 성격
-        public enum CharacterPersonality
+        public enum CrewPositivePersonality
+        {
+
+        }
+
+
+        public enum CrewNegativePersonality
+        {
+
+        }
+
+
+        // 손님 캐릭터 성격
+        public enum CustomerPersonality
         {
             Normal,     // 일반
             Impatient,  // 급함

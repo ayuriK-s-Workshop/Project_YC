@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class ResistanceManageController : SceneController

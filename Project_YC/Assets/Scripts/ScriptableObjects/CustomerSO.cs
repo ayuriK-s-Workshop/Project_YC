@@ -5,7 +5,7 @@ public class CustomerSO : ScriptableObject
 {
     public int id;
     public string name;
-    public Defines.Enums.CharacterPersonality personality;
+    public Defines.Enums.CustomerPersonality personality;
     public int dialogueId;
     public int itemId;
 }
